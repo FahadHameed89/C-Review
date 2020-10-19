@@ -6,6 +6,8 @@ namespace CSharp_Review
     {
         static void Main(string[] args)
         {
+            // In-Class Exercise: 
+            // Make the Admin
             // Declaration of a variable
 
             char aChar; // A single character value
@@ -28,7 +30,7 @@ namespace CSharp_Review
             Console.WriteLine($"Please enter your name.");
 
             // Input from the Console
-            name = Console.ReadLine().Trim();
+            name = Console.ReadLine().Trim().ToLower();
 
             // Condition is an expression that evaluates to either true or False.
             // True runs the 'if' side, False runs the 'else' side
@@ -39,7 +41,7 @@ namespace CSharp_Review
             {
                 Console.WriteLine("Invalid Input, please enter a name!");
             }
-            else if (name == "Admin")
+            else if (name == "admin")
             {
                 Console.WriteLine("Administrative Access Granted! You're In!");
 
