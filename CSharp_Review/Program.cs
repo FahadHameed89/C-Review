@@ -6,7 +6,7 @@ namespace CSharp_Review
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World! What's good?");
         }
     }
 }
