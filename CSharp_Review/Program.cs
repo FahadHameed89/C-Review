@@ -24,39 +24,31 @@ namespace CSharp_Review
             double aDouble; // Decimal values
             decimal aDecimal; // Also decimal values
 
-            string name;
+            int userInput;
+            string output;
 
-            // String Interpolation
-            Console.WriteLine($"Please enter your name.");
+            Console.Write("Please enter a number:");
 
-            // Input from the Console
-            name = Console.ReadLine().Trim().ToLower();
+            userInput = int.Parse(Console.ReadLine());
 
-            // Condition is an expression that evaluates to either true or False.
-            // True runs the 'if' side, False runs the 'else' side
+            // Switch works with discrete values, not range like if allows, but some people fint it more readable.
+            // Anything you can do with a switch, you can do with an if
+            // Falling through cases 
 
-            // Roughly equivalent to name == "", except it also accounts for whitespace and null values.
-            // Whitespace is already trimmed. 
-            if (string.IsNullOrWhiteSpace(name))
+            switch (userInput % 2)
             {
-                Console.WriteLine("Invalid Input, please enter a name!");
-            }
-            else if (name == "admin")
-            {
-                Console.WriteLine("Administrative Access Granted! You're In!");
-
-            }
-            else
-            {
-                // Concatenation
-                Console.WriteLine("Hello " + name + "! What's good? iT'S ALL gOOD!");
-
-                // Parameterized Output
-                Console.WriteLine("Hello {0}! What's good? iT'S ALL gOOD!", name);
-
+                case 0:
+                    output = "even";
+                    break;
+                case 1:
+                    output = "odd";
+                    break;
+                default:
+                    output = "even";
+                    break;
             }
 
-
+            Console.WriteLine($"The Number is {userInput}, it is {output}");
             // Exit of the C# Program
         }
     }
