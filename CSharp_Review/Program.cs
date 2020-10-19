@@ -28,18 +28,31 @@ namespace CSharp_Review
             Console.WriteLine($"Please enter your name.");
 
             // Input from the Console
-            name = Console.ReadLine();
+            name = Console.ReadLine().Trim();
 
+            // Condition is an expression that evaluates to either true or False.
+            // True runs the 'if' side, False runs the 'else' side
 
+            // Roughly equivalent to name == "", except it also accounts for whitespace and null values.
+            // Whitespace is already trimmed. 
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Invalid Input, please enter a name!");
+            }
+            else if (name == "Admin")
+            {
+                Console.WriteLine("Administrative Access Granted! You're In!");
 
-            // Concatenation
-            Console.WriteLine("Hello " + name + "! What's good? iT'S ALL gOOD!");
+            }
+            else
+            {
+                // Concatenation
+                Console.WriteLine("Hello " + name + "! What's good? iT'S ALL gOOD!");
 
-            // Parameterized Output
-            Console.WriteLine("Hello {0}! What's good? iT'S ALL gOOD!", name);
+                // Parameterized Output
+                Console.WriteLine("Hello {0}! What's good? iT'S ALL gOOD!", name);
 
-
-
+            }
 
 
             // Exit of the C# Program
