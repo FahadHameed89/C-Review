@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO.Compression;
 
 namespace CSharp_Review
 {
@@ -27,28 +28,38 @@ namespace CSharp_Review
             int userInput;
             string output;
 
-            Console.Write("Please enter a number:");
+            Console.Write("Please enter a number to count to:");
 
             userInput = int.Parse(Console.ReadLine());
 
-            // Switch works with discrete values, not range like if allows, but some people fint it more readable.
-            // Anything you can do with a switch, you can do with an if
-            // Falling through cases 
 
-            switch (userInput % 2)
+            // Initialize, Test, Modify
+            for (int x = 1; x <= userInput; x++)
             {
-                case 0:
-                    output = "even";
-                    break;
-                case 1:
-                    output = "odd";
-                    break;
-                default:
-                    output = "even";
-                    break;
+                // Process
+                Console.WriteLine(x);
             }
 
-            Console.WriteLine($"The Number is {userInput}, it is {output}");
+            // Initialize
+            int y = 1;
+            // Test
+            while (y <= userInput)
+            {
+                // Process
+                Console.WriteLine(y);
+                y++; // Modify
+            }
+
+
+            int u = 1;
+            do {
+                Console.WriteLine(u);
+                u++; 
+            }
+            while (u <= userInput);
+
+
+
             // Exit of the C# Program
         }
     }
