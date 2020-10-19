@@ -14,19 +14,31 @@ namespace CSharp_Review
             bool aBoolean; // Boolean (True or False) values
 
             byte aByte; // Super small integer values (120 max)
-            short aShortInt // Small integer values (~65000 max)
+            short aShortInt; // Small integer values (~65000 max)
             int anInt; // Numerical values with no decimals (~210000000 max)
-            long aLongInt // Big integer values (Bigger than above)
+            long aLongInt; // Big integer values (Bigger than above)
 
             float aFloat; // floating point values with less precision than doubles
             double aDouble; // Decimal values
             decimal aDecimal; // Also decimal values
 
-            // Input from the Console
-            aString = Console.ReadLine();
+            string name;
 
-            // Entry of the C# Program
-            Console.WriteLine("Hello World! What's good? iT'S ALL gOOD!");
+            // String Interpolation
+            Console.WriteLine($"Please enter your name.");
+
+            // Input from the Console
+            name = Console.ReadLine();
+
+
+
+            // Concatenation
+            Console.WriteLine("Hello " + name + "! What's good? iT'S ALL gOOD!");
+
+            // Parameterized Output
+            Console.WriteLine("Hello {0}! What's good? iT'S ALL gOOD!", name);
+
+
 
 
 
