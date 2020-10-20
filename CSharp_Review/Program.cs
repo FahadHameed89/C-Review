@@ -7,62 +7,62 @@ namespace CSharpReview_4Point2
     {
         static void Main(string[] args)
         // In class practice:
-        // Change the program to take in a list of names. Make sure the names are trimmed before they enter the list.
-        // Change the GetInt() method to GetName().
-        // Challenge: Prevent duplicates (case insensitive) from being added.
+        // Combine the two list programs we've looked at. Prompt for both a name, and an age (between 1 and 100), until the name entered is "exit" (case insensitive).
+        // Once exited, output "$name is $age years old." for each stored person.
+        // Hint: You'll need multiple arrays.
+        // Challenge: Create a class/object to store the name and age, and use only one list.
 
         // Entry point of programs in C#.
         {
             List<string> nameList = new List<string>();
-
-            int userNumber = GetInt("Please enter an Integer:");
-
-            string x = "x";
+            List<int> ageList = new List<int>();
 
             string userInput = "";
             do
             {
-                userInput = GetName("Please enter a name to add to the list, or type 'x' to exit: ");
-                if (userInput != "x")
+                userInput = GetName("Please enter a name to add to the list, or \"exit\" to exit: ");
+                if (userInput != "exit")
                 {
-
-                    if (!nameList.Exists(x => x.ToUpper() == userInput.ToUpper())) {
-                        // Exists() accepts a predicate, which is typically expressed as an arrow funtion
-                        // Left side of the arrow is the input, the right side of the arrow is the return.
-                    nameList.Add(userInput);
+                    if (nameList.Exists(x => x.ToUpper() == userInput.ToUpper()))
+                    // Exists() accepts a predicate, which is typically expressed as an arrow function (but not always).
+                    // The left of the arrow is the input, and the right of the arrow is the return.
+                    /*
+                    static bool Anonymous(x)
+                    {
+                        return x.ToUpper() == userInput.ToUpper();
+                    }
+                    */
+                    {
+                        Console.WriteLine("That name is already in the list.");
+                    }
+                    else
+                    {
+                        nameList.Add(userInput);
+                        ageList.Add(GetInt($"Please enter the age for {userInput}: ", 1, 100));
                     }
                 }
-            } while (userInput.ToLower() != x);
-
+                // "Sentinel Value Loop"
+            } while (userInput.ToLower() != "exit");
 
             // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
-            foreach (string name in nameList)
+            for (int i = 0; i < nameList.Count; i++)
             {
-                Console.WriteLine(name);
+                Console.WriteLine($"{nameList[i]} is {ageList[i]} years old.");
             }
         }
 
-        /*
-            static: Tells C# to only keep one copy of the method in memory (important for OOP).
-            int: Return type, the type of data coming out of the method.
-            GetInt: Name of the method, how we call it.
-            string: First parameter type, the type of input expected.
-            prompt: First parameter/argument name, how we refer to that value in the method.
-        */
         static string GetName(string prompt)
         {
+            Console.Write(prompt);
 
-                string input;
-                Console.Write(prompt);
-                input = (Console.ReadLine());
-                return input;
-
+            return Console.ReadLine().Trim();
         }
 
         static int GetInt(string prompt)
         {
             int input = 0;
             bool valid = false;
+            // "Validation Loop"
             do
             {
                 Console.Write(prompt);
@@ -71,9 +71,37 @@ namespace CSharpReview_4Point2
                     input = int.Parse(Console.ReadLine());
                     valid = true;
                 }
-                catch
+                catch (Exception e)
                 {
-                    Console.WriteLine("Error: Invalid Integer..");
+                    Console.WriteLine($"Error: {e.Message}");
+                }
+            }
+            while (!valid);
+
+            return input;
+        }
+
+        // "Overloading" a method refers to having multiple method signatures with the same name, but different parameters.
+        static int GetInt(string prompt, int min, int max)
+        {
+            int input = 0;
+            bool valid = false;
+            // "Validation Loop"
+            do
+            {
+                Console.Write(prompt);
+                try
+                {
+                    input = int.Parse(Console.ReadLine());
+                    if (input < min || input > max)
+                    {
+                        throw new Exception($"The supplied value must be between {min} and {max} inclusive.");
+                    }
+                    valid = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Error: {e.Message}");
                 }
             }
             while (!valid);
