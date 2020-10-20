@@ -7,58 +7,21 @@ namespace CSharp_Review
     {
         static void Main(string[] args)
         {
-            // In-Class Exercise: 
-            // Make the Admin
-            // Declaration of a variable
+            // Entry of the Program
 
-            char aChar; // A single character value
-            string aString; // String (A collection of characters))
+            // C# Arrays are fixed length collections of numbers:
+            
+            // Initialize an array of length 5.
+            // Indexes start at 0, then ramp up like in JS. 5th index is [4].
+            int[] intArray = new int[5];
 
-            bool aBoolean; // Boolean (True or False) values
+            // If we want to set it, like other languages, we can assign an index. 
+            intArray[3] = 10;
 
-            byte aByte; // Super small integer values (120 max)
-            short aShortInt; // Small integer values (~65000 max)
-            int anInt; // Numerical values with no decimals (~210000000 max)
-            long aLongInt; // Big integer values (Bigger than above)
-
-            float aFloat; // floating point values with less precision than doubles
-            double aDouble; // Decimal values
-            decimal aDecimal; // Also decimal values
-
-            int userInput;
-            string output;
-
-            Console.Write("Please enter a number to count to:");
-
-            userInput = int.Parse(Console.ReadLine());
-
-
-            // Initialize, Test, Modify
-            for (int x = 1; x <= userInput; x++)
+            for (int i = 0; i <= intArray.Length; i++)
             {
-                // Process
-                Console.WriteLine(x);
+                Console.WriteLine(intArray[i]);
             }
-
-            // Initialize
-            int y = 1;
-            // Test
-            while (y <= userInput)
-            {
-                // Process
-                Console.WriteLine(y);
-                y++; // Modify
-            }
-
-
-            int u = 1;
-            do {
-                Console.WriteLine(u);
-                u++; 
-            }
-            while (u <= userInput);
-
-
 
             // Exit of the C# Program
         }
