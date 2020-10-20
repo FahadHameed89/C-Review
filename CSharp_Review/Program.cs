@@ -15,6 +15,8 @@ namespace CSharpReview_4Point2
         {
             List<string> nameList = new List<string>();
 
+            int userNumber = GetInt("Please enter an Integer:");
+
             string x = "x";
 
             string userInput = "";
@@ -24,12 +26,13 @@ namespace CSharpReview_4Point2
                 if (userInput != "x")
                 {
 
-                    if (!nameList.Contains(userInput)) {
-              
+                    if (!nameList.Exists(x => x.ToUpper() == userInput.ToUpper())) {
+                        // Exists() accepts a predicate, which is typically expressed as an arrow funtion
+                        // Left side of the arrow is the input, the right side of the arrow is the return.
                     nameList.Add(userInput);
                     }
                 }
-            } while (userInput != x);
+            } while (userInput.ToLower() != x);
 
 
             // foreach will loop over every item in a collection, however they are typically treated as readonly (with "normal" data types anyways).
@@ -48,10 +51,32 @@ namespace CSharpReview_4Point2
         */
         static string GetName(string prompt)
         {
-            string input;
 
-            Console.Write(prompt);
-            input = (Console.ReadLine());
+                string input;
+                Console.Write(prompt);
+                input = (Console.ReadLine());
+                return input;
+
+        }
+
+        static int GetInt(string prompt)
+        {
+            int input = 0;
+            bool valid = false;
+            do
+            {
+                Console.Write(prompt);
+                try
+                {
+                    input = int.Parse(Console.ReadLine());
+                    valid = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Error: Invalid Integer..");
+                }
+            }
+            while (!valid);
 
             return input;
         }
